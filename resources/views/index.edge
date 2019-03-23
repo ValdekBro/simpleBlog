@@ -1,0 +1,11 @@
+@layout('layouts.main')
+
+@section('content')
+    @each(post in posts)
+        <div class="box post">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description }}</p>
+            <p>Author: {{ post.user_id }}</p>
+        </div>
+    @endeach
+@endsection

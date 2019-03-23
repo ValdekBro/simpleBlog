@@ -1,0 +1,48 @@
+.box {
+    grid-template-columns: auto;
+    padding: 2em;
+    
+}
+
+
+span {
+    display: block;
+    background: yellow;
+    padding: .3em;
+    margin-bottom: 20px;
+}
+
+.post {
+
+}
+
+.auth {
+    width: 100%;
+}
+.auth label {
+    font-weight: bold;
+}
+.auth input[type='text'], input[type='email'], input[type='password'] {
+    width: 20%;
+    min-width: 300px;
+    display: block;
+    padding: .5em;
+    margin-bottom: 20px;
+    border: 2px solid lightgray;
+}
+.auth button {
+    padding: .5em;
+    background: #455668;
+    border: 0;
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 20px;
+    cursor: pointer;
+}
+.auth button:hover {
+    color: rgb(88, 255, 205);
+}
