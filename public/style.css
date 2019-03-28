@@ -63,7 +63,7 @@ body {
 .menubar nav ul li a:hover {
   background: #455668;
 }
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 800px) {
   .menubar nav ul li.right,
   .menubar nav ul li {
     float: none;

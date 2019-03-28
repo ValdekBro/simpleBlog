@@ -1,0 +1,44 @@
+@layout('layouts.main')
+
+@section('css')
+{{ style('forms') }}
+@endsection
+
+@section('content')
+<div class="box">
+  @if(flashMessage('message'))
+      <span>{{ flashMessage('message') }}</span>
+  @endif
+    <form action="{{ route('PostController.update', { id: post.id }) }}" method="POST">
+        {{ csrfField() }}
+
+        <label for="title">Post Title</label>
+        <input type="text" name="title" value="{{ post.title }}">
+        @if(hasErrorFor('title'))
+            <span>
+                {{ getErrorFor('title') }}
+            </span>
+        @endif
+
+        <label for="description">Description</label>
+        <input type="text" name="description" value="{{ post.description }}">
+        @if(hasErrorFor('description'))
+            <span>
+                {{ getErrorFor('description') }}
+            </span>
+        @endif
+        
+        <label for="image">Image</label>
+        <img src="{{post.image_url}}" alt="Post image">
+        <input type="file" name="image">
+        @if(hasErrorFor('image'))
+            <span>
+                {{ getErrorFor('image') }}
+            </span>
+        @endif
+
+        <button type="submit">Update!</button>
+      </form>
+  </div>
+
+@endsection

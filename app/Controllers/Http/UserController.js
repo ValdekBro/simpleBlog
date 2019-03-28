@@ -8,7 +8,7 @@ class UserController {
     async create({ request, auth, response}) {
         const user = await User.create(request.only(['username','email','password']));
 
-        console.log(users.toJSON()); //all users log
+        // console.log(users.toJSON()); //all users log
 
         await auth.login(user);
         return response.redirect('/');

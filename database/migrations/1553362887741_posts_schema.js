@@ -9,6 +9,7 @@ class PostsSchema extends Schema {
       table.increments()
       table.string('title')
       table.string('description')
+      table.string('image_url').nullable()
       table.integer('user_id')
       table.timestamps()
     })

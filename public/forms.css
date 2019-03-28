@@ -1,36 +1,21 @@
 .box {
     grid-template-columns: auto;
     padding: 2em;
-    
+    /* border: 2px solid lightgray;
+    border-radius: 10px; */
+    background: rgba(255, 255, 255, 0.15);
+    margin: 10px;
 }
 
 
 span {
     display: block;
-    background: yellow;
+    background: rgb(0, 84, 95);
     padding: .3em;
     margin-bottom: 20px;
 }
 
-.post {
-
-}
-
-.auth {
-    width: 100%;
-}
-.auth label {
-    font-weight: bold;
-}
-.auth input[type='text'], input[type='email'], input[type='password'] {
-    width: 20%;
-    min-width: 300px;
-    display: block;
-    padding: .5em;
-    margin-bottom: 20px;
-    border: 2px solid lightgray;
-}
-.auth button {
+button {
     padding: .5em;
     background: #455668;
     border: 0;
@@ -43,6 +28,58 @@ span {
     margin: 20px;
     cursor: pointer;
 }
-.auth button:hover {
+
+button:hover {
     color: rgb(88, 255, 205);
 }
+
+input[type='text'], input[type='file'], input[type='email'], input[type='password'] {
+    width: 20%;
+    min-width: 300px;
+    display: block;
+    padding: .5em;
+    margin-bottom: 20px;
+    border: 2px solid lightgray;
+}
+
+.post h1 {
+    text-align: center;
+}
+
+.post img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    max-height: 400px;
+}
+
+.post ul a {
+    color: rgb(255, 255, 255);
+    display: block;
+    padding: 10px;
+    width: fit-content
+}
+.post ul li {
+    display: inline;
+}
+.post ul li a:hover {
+    background: #455668;
+}
+
+.post p {
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+.auth {
+    width: 100%;
+}
+.auth label {
+    font-weight: bold;
+}
+
+

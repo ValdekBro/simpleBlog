@@ -1,0 +1,58 @@
+@layout('layouts.main')
+
+@section('css')
+{{ style('forms') }}
+{{ style('style') }}
+@endsection
+
+@section('content')
+<div class="box">
+  @if(flashMessage('message'))
+      <span>{{ flashMessage('message') }}</span>
+  @endif
+      <form action="{{ route('CreatePost') }}" method="POST" enctype="multipart/form-data">
+        {{ csrfField() }}
+
+        <label for="title">Post Title</label>
+        <input type="text" name="title" value="{{ old('title', '') }}">
+        @if(hasErrorFor('title'))
+            <span>
+                {{ getErrorFor('title') }}
+            </span>
+        @endif
+
+        <label for="description">Description</label>
+        <input type="text" name="description">
+        @if(hasErrorFor('description'))
+            <span>
+                {{ getErrorFor('description') }}
+            </span>
+        @endif
+        
+        <label for="image">Image</label>
+        <input type="file" name="image">
+        @if(hasErrorFor('image'))
+            <span>
+                {{ getErrorFor('image') }}
+            </span>
+        @endif
+
+        <button type="submit">Create!</button>
+      </form>
+  </div>
+<h2>Your posts</h2>
+
+@each(post in posts)
+    <div class="box post">
+        <h1>{{ post.title }}</h3>
+        <img src="{{post.image_url}}" alt="Post image">
+        <p>{{ post.description }}</p>
+        {{--  <p>Author: {{ post.user_id }}</p>  --}}
+        <ul>
+            <li><a href="{{ route('PostController.delete', { id: post.id }) }}">Delete</a></li>
+            <li><a href="{{ route('PostController.edit', { id: post.id }) }}">Edit</a></li>
+        </ul>
+    </div>
+@endeach
+
+@endsection

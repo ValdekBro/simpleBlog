@@ -1,11 +1,17 @@
 @layout('layouts.main')
 
+@section('css')
+{{ style('forms') }}
+{{ style('style') }}
+@endsection
+
 @section('content')
     @each(post in posts)
         <div class="box post">
-            <h3>{{ post.title }}</h3>
+            <h1>{{ post.title }}</h3>
+            <img src="{{post.image_url}}" alt="Post image">
             <p>{{ post.description }}</p>
-            <p>Author: {{ post.user_id }}</p>
+            Author id: <a href="">{{ post.user_id }}</a>
         </div>
     @endeach
 @endsection
