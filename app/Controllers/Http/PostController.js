@@ -4,8 +4,10 @@ const Post = use('App/Models/Post');
 const CloudinaryService = use('Cloudinary')
 
 class PostController {
-    async home({ view }) {
-        const posts = await Post.all();
+    async home({ view , session, auth }) {
+        const posts = await Post.query()
+        .with('user')
+        .fetch();
         return view.render('index', { posts: posts.toJSON() })
     }
 
@@ -37,7 +39,7 @@ class PostController {
         //     image_url: cloudinaryResponse.secure_url,
         //     user_id: auth.user.id
         // });
-        session.flash({ message: 'Your post has been posted!' });
+        //session.flash({ message: 'Your post has been posted!' });
         return response.redirect('back');
     }
 
