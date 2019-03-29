@@ -10,12 +10,16 @@ a {
   text-decoration: none;
   color: rgb(45, 1, 80);
 }
-
-body {
-  background-color: rgb(180, 255, 230);
-  padding-bottom: 100px;
+a:hover {
+  color: rgb(255, 255, 255);
 }
 
+
+
+body {
+  background-color: rgb(53, 221, 165);
+  padding-bottom: 100px;
+}
 
 
 .header {
@@ -37,6 +41,18 @@ body {
   font-weight: 900;
 }
 
+
+.message {
+  color: aliceblue;
+  text-align: center;
+  display: block;
+  background: rgb(0, 84, 95);
+  padding: 10px;
+}
+.big-message {
+  font-size: 20px;
+  padding: 20px 0px 20px 0px;
+}
 
 
 .menubar {

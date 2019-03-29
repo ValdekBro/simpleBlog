@@ -7,16 +7,13 @@
 
 @section('content')
 <div class="box">
-  @if(flashMessage('message'))
-      <span>{{ flashMessage('message') }}</span>
-  @endif
       <form action="{{ route('CreatePost') }}" method="POST" enctype="multipart/form-data">
         {{ csrfField() }}
 
         <label for="title">Post Title</label>
         <input type="text" name="title" value="{{ old('title', '') }}">
         @if(hasErrorFor('title'))
-            <span>
+            <span class="message">
                 {{ getErrorFor('title') }}
             </span>
         @endif
@@ -24,7 +21,7 @@
         <label for="description">Description</label>
         <input type="text" name="description">
         @if(hasErrorFor('description'))
-            <span>
+            <span class="message">
                 {{ getErrorFor('description') }}
             </span>
         @endif
@@ -32,7 +29,7 @@
         <label for="image">Image</label>
         <input type="file" name="image">
         @if(hasErrorFor('image'))
-            <span>
+            <span class="message">
                 {{ getErrorFor('image') }}
             </span>
         @endif

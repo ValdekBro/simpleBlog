@@ -5,13 +5,11 @@
     /* border: 2px solid lightgray;
     border-radius: 10px; */
     background: rgba(255, 255, 255, 0.15);
-    margin: 10px;
     display: block;
-
-    margin-left: auto;
-    margin-right: auto;
-
+    margin: 10px auto 10px auto;
 }
+
+
 @media screen and (max-width: 800px) {
     .box {
       margin: 0px;
@@ -20,12 +18,6 @@
 }
 
 
-span {
-    display: block;
-    background: rgb(0, 84, 95);
-    padding: .3em;
-    margin-bottom: 20px;
-}
 
 button {
     padding: .5em;
@@ -86,7 +78,9 @@ input[type='text'], input[type='file'], input[type='email'], input[type='passwor
     margin: 10px 0px 10px 0px;
 }
 
-
+.auth h1 {
+    margin-bottom: 20px;
+}
 .auth label {
     font-weight: bold;
 }

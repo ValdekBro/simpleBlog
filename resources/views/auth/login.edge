@@ -2,22 +2,20 @@
 
 @section('css')
 {{ style('forms') }}
+{{ style('style') }}
 @endsection
 
 @section('content')
   
   <div class="box auth">
-      <h1>Login now</h1> <br><br>
-    @if(flashMessage('loginError'))
-        <span>{{ flashMessage('loginError') }}</span>
-    @endif
+      <h1>Login now</h1>
       <form action="{{ route('UserController.login') }}" method="POST">
         {{ csrfField() }}
 
         <label for="email">Email</label>
         <input type="email" name="email" value="{{ old('email', '') }}">
         @if(hasErrorFor('email'))
-            <span>
+            <span class="message">
                 {{ getErrorFor('email') }}
             </span>
         @endif
@@ -25,7 +23,7 @@
         <label for="password">Password</label>
         <input type="password" name="password">
         @if(hasErrorFor('password'))
-            <span>
+            <span class="message">
                 {{ getErrorFor('password') }}
             </span>
         @endif

@@ -14,7 +14,7 @@
     <header>
         <div class="header">
             <h1>Best blog</h1>
-            <p>By actionaly <a href="https://www.youtube.com/channel/UC0HveIhE_uM3z3Bag2Up4CQ?view_as=subscriber">me</a></p>
+            <p>By actionaly <a href="https://www.youtube.com/playlist?list=PL6h7SdeqHzgyfxegDhO8tj27buSIF6Jy2"  target="_blank">me</a></p>
         </div>
         <div class="menubar">
             <nav>
@@ -32,10 +32,25 @@
             <nav>
         </div>
     </header>
-        
+
+
+    @if(flashMessage('message'))
+        <span id="message" class="message big-message">{{ flashMessage('message') }}</span>
+    @endif
+    <script>
+            function func() {
+                document.getElementById("message").style.display = "none";
+            }
+            setTimeout(func, 8000);
+    </script>
+
+
+
     <div class="container">
         @!section('content')
     </div>
+
+
     
 </body>
 </html>
