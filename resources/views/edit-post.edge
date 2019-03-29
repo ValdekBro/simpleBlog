@@ -22,7 +22,7 @@
         @endif
 
         <label for="description">Description</label>
-        <input type="text" name="description" value="{{ post.description }}">
+        <textarea name="description" cols="40" rows="10" value="{{ post.description }}"></textarea>
         @if(hasErrorFor('description'))
             <span class="message">
                 {{ getErrorFor('description') }}
@@ -30,7 +30,7 @@
         @endif
         
         <label for="image">Image</label>
-        <img src="{{post.image_url}}" alt="Post image">
+        <img src="{{post.image_url}}" alt="No image">
         <input type="file" name="image">
         @if(hasErrorFor('image'))
             <span class="message">

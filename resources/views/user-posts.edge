@@ -19,7 +19,7 @@
         @endif
 
         <label for="description">Description</label>
-        <input type="text" name="description">
+        <textarea name="description" cols="40" rows="10"></textarea>
         @if(hasErrorFor('description'))
             <span class="message">
                 {{ getErrorFor('description') }}
@@ -42,7 +42,7 @@
 @each(post in posts)
     <div class="box post">
         <h1>{{ post.title }}</h3>
-        <img src="{{post.image_url}}" alt="Post image">
+        <img src="{{post.image_url}}" alt="">
         <p>{{ post.description }}</p>
         {{--  <p>Author: {{ post.user_id }}</p>  --}}
         <ul>

@@ -10,9 +10,9 @@
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
     .box {
-      margin: 0px;
+      margin: 20px 0px 20px 0px;
       width: 90%;
     }
 }
@@ -37,14 +37,20 @@ button:hover {
     color: rgb(88, 255, 205);
 }
 
-input[type='text'], input[type='file'], input[type='email'], input[type='password'] {
-    width: 300px;
+input[type='text'], 
+input[type='file'], 
+input[type='email'], 
+input[type='password'],
+textarea {
+    width: 400px;
     min-width: 160px;
-    max-width: 340px;
+    max-width: 95%;
     display: block;
     padding: .5em;
     margin-bottom: 20px;
     border: 2px solid lightgray;
+
+    max-height: 500px;
 }
 .post h1 {
     text-align: center;

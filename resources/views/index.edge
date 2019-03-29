@@ -10,8 +10,13 @@
     @each(post in posts)
         <div class="box post">
             <h1>{{ post.title }}</h3>
-            <img src="{{post.image_url}}" alt="Post image">
-            <p>{{ post.description }}</p>
+            <img src="{{post.image_url}}" alt="">
+            <p id="Edescription">{{ post.description }}</p>
+                <script>                    //set Enters like <br>
+                    var str = document.getElementById("Edescription").innerHTML.replace(/\\n/g,'<br>');
+                    document.getElementById("Edescription").innerHTML = str;
+                    document.getElementById("Edescription").id = "description";
+                </script>
             Author: {{ post.user.username }}
         </div>
     @endeach

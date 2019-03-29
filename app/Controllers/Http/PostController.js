@@ -11,6 +11,7 @@ class PostController {
         return view.render('index', { posts: posts.toJSON() })
     }
 
+
     async userPosts({view, auth}) {
         const posts = await auth.user.posts().fetch();
         console.log(posts)
@@ -18,11 +19,13 @@ class PostController {
         return view.render('user-posts', { posts: posts.toJSON() })
     }
 
+    
     async create({ request, response, session, auth}) {
-        const post = request.all();
+        const post = request.all(); 
         const file = request.file('image');
-        
-        try {
+
+
+        if(file) try {
             const cloudinaryResponse = await CloudinaryService.uploader.upload(file.tmpPath);
             const posted = await auth.user.posts().create({
                 title: post.title,
@@ -33,12 +36,18 @@ class PostController {
         } catch (e) {
             session.flash({message: 'Error'});
         }
-        // console.log({
-        //     title: post.title,
-        //     description: post.description,
-        //     image_url: cloudinaryResponse.secure_url,
-        //     user_id: auth.user.id
-        // });
+
+
+
+        else {
+            const posted = await auth.user.posts().create({
+                title: post.title,
+                description: post.description,
+                image_url: null,
+                user_id: auth.user.id
+            });
+        } 
+        
         //session.flash({ message: 'Your post has been posted!' });
         return response.redirect('back');
     }
@@ -51,10 +60,12 @@ class PostController {
         return response.redirect('back');
     }
 
+
     async edit({ params, view }) {
         const post = await Post.find(params.id);
         return view.render('edit-post', { post: post });
     }
+
 
     async update ({ response, request, session, params }) {
         const post = await Post.find(params.id);
