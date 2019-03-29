@@ -1,10 +1,22 @@
 .box {
     grid-template-columns: auto;
+    width: 50%;
     padding: 2em;
     /* border: 2px solid lightgray;
     border-radius: 10px; */
     background: rgba(255, 255, 255, 0.15);
     margin: 10px;
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+@media screen and (max-width: 800px) {
+    .box {
+      margin: 0px;
+      width: 90%;
+    }
 }
 
 
@@ -34,14 +46,14 @@ button:hover {
 }
 
 input[type='text'], input[type='file'], input[type='email'], input[type='password'] {
-    width: 20%;
-    min-width: 300px;
+    width: 300px;
+    min-width: 160px;
+    max-width: 340px;
     display: block;
     padding: .5em;
     margin-bottom: 20px;
     border: 2px solid lightgray;
 }
-
 .post h1 {
     text-align: center;
 }
@@ -75,9 +87,6 @@ input[type='text'], input[type='file'], input[type='email'], input[type='passwor
 }
 
 
-.auth {
-    width: 100%;
-}
 .auth label {
     font-weight: bold;
 }
