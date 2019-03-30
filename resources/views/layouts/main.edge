@@ -43,10 +43,13 @@
             }
             setTimeout(func, 8000);
     </script>
+    
+    <div class="top-bar">
+        @!section('top-bar')
+    </div>
+    
 
-
-
-    <div class="container">
+    <div class="container" id="content">
         @!section('content')
     </div>
 
@@ -54,5 +57,7 @@
     <footer>
         @!section('footer')
     </footer>
+
+    @!section('scripts')
 </body>
 </html>

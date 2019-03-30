@@ -3,7 +3,91 @@
 @section('css')
 {{ style('forms') }}
 {{ style('style') }}
+{{ style('slide-arrow')}}
 @endsection
+
+@section('scripts')
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script> //slide-arrow controll
+        $( ".arrow-icon" ).click(function() {
+            $(this).toggleClass("open");
+            $("#panel").slideToggle();
+        });
+    </script>
+
+
+    <script>
+        function filtByUser(){
+            var fuser = $('#user-filter').val();
+            var oXHR = new XMLHttpRequest();
+        
+            oXHR.open("GET", "/ajax/posts_by_user?user=" + encodeURIComponent(fuser), true);
+
+            oXHR.onreadystatechange = function (oEvent) {  
+                if (oXHR.readyState === 4) {  
+                    if (oXHR.status === 200) {  
+                        const users = JSON.parse(oXHR.responseText);
+                        console.log(users);                             // Posts to view
+                    } else {  
+                    console.log("Error", oXHR.statusText);  
+                    }  
+                }  
+            }; 
+
+            oXHR.send();  
+
+                        // Without requests
+            $(".author").parent().hide();
+            $(".author:contains("+fuser+")").parent().show();
+        }
+        
+        function filtByDate(){
+            var fdate = $('#date-filter').val();
+            var oXHR = new XMLHttpRequest();
+
+            let date = 'date=' + encodeURIComponent(fdate);
+            oXHR.open("GET", "/ajax/posts_by_date?" + date, true);
+
+            oXHR.onreadystatechange = function (oEvent) {  
+                if (oXHR.readyState === 4) {  
+                    if (oXHR.status === 200) {  
+                        const posts = JSON.parse(oXHR.responseText);
+                        console.log(posts);                             // Posts to view
+                    } else {  
+                    console.log("Error", oXHR.statusText);  
+                    }  
+                }  
+            }; 
+
+            oXHR.send();  
+
+                        // Without requests
+            $(".created_at").parent().hide();
+            $(".created_at:contains("+fdate.substring(0,10)+")").parent().show();
+        }
+    </script>
+@endsection
+
+
+
+@section('top-bar')
+    <div id="panel" class="filter-panel" hidden="true">
+        <ul>
+            <li>By User <input type="text" id="user-filter" onchange="filtByUser()"></li>
+            <li>By Date <input type="text" id="date-filter" onchange="filtByDate()"></li>
+        </ul>
+    </div>
+    <div class="slide-arrow">
+            <h2>Filters</h2>
+            <a class="arrow-icon open">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+            </a>
+    </div>
+@endsection
+
 
 @section('content')
     
@@ -17,7 +101,8 @@
                     document.getElementById("Edescription").innerHTML = str;
                     document.getElementById("Edescription").id = "description";
                 </script>
-            Author: {{ post.user.username }}
+            Author: <div class="author">{{ post.user.username }}</div>
+            Created at: <div class="created_at">{{ post.created_at }}</div>
         </div>
     @endeach
 @endsection

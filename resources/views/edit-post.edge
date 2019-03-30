@@ -22,7 +22,7 @@
         @endif
 
         <label for="description">Description</label>
-        <textarea name="description" cols="40" rows="10" value="{{ post.description }}"></textarea>
+        <textarea name="description" cols="40" rows="10">{{ post.description }}</textarea>
         @if(hasErrorFor('description'))
             <span class="message">
                 {{ getErrorFor('description') }}

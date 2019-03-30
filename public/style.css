@@ -2,6 +2,7 @@
   font-family: Arial;
   margin: 0;
   padding: 0;
+  text-shadow: 3px 2px rgba(0, 0, 0, 0.146);
   /* -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(255, 255, 255); */
 }
@@ -29,7 +30,6 @@ body {
   letter-spacing: 4px;
   font-variant: small-caps;
   padding: 100px;
-  text-shadow: 3px 2px rgba(0, 0, 0, 0.116);
 }
 
 .header p {
@@ -61,7 +61,6 @@ body {
   background-color: rgb(51, 167, 128);
   text-transform: uppercase;
   font-size: 20px;
-  text-shadow: 3px 2px rgba(0, 0, 0, 0.144);
   
 }
 
@@ -88,10 +87,22 @@ body {
   }
 }
 
+.filter-panel, .slide-arrow {
+  color: rgb(255, 255, 255);
+}
+.filter-panel {
+  background: rgb(51, 182, 138);
+  padding: 20px 20px 10px 20px;
+}
+.filter-panel ul li {
+  display: block;
+}
+.slide-arrow {
+  padding: 0px 20px 0px 20px;
+}
+
 .container {
   background-color: rgb(51, 182, 138);
   padding: 50px;
   color: white;
-
-  text-shadow: 3px 2px rgba(0, 0, 0, 0.1);
 }
