@@ -27,7 +27,7 @@ Route.post('/signup', 'UserController.create').as('CreateUser');
 Route.post('/login', 'UserController.login').as('LoginUser');
 // .validator('LoginUser');
 Route.get   ('/logout', async ({ auth, response }) => {
-    await auth.logout();
+    console.log(await auth.logout());
     return response.redirect('/');
 });
 
@@ -43,7 +43,8 @@ Route.get('/ajax/posts_by_date', async ({ request, response }) => {
         .with('user')
         .where('created_at', request.all().date)
         .fetch();
-        return response.json({ posts: posts.toJSON() })
+    console.log(posts);
+    return response.json({ posts: posts.toJSON() })
 });
 
 Route.get('/ajax/posts_by_user', async ({ request, response }) => {
@@ -51,6 +52,6 @@ Route.get('/ajax/posts_by_user', async ({ request, response }) => {
         .with('user')
         .where('user_id', 2)
         .fetch();
-        
-        return response.json({ posts: posts.toJSON() })
+    console.log(posts);
+    return response.json({ posts: posts.toJSON() })
 }); 
