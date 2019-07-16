@@ -8,14 +8,12 @@ class PostController {
         const posts = await Post.query()
         .with('user')
         .fetch();
-        console.log(posts);
         return view.render('index', { posts: posts.toJSON() })
     }
 
 
     async userPosts({view, auth}) {
         const posts = await auth.user.posts().fetch();
-        console.log(posts)
 
         return view.render('user-posts', { posts: posts.toJSON() })
     }
@@ -24,30 +22,28 @@ class PostController {
     async create({ request, response, session, auth}) {
         const post = request.all(); 
         const file = request.file('image');
-        console.log(file);
         var cloudinaryResponse;
         if(file) {
             try {
                 cloudinaryResponse = await CloudinaryService.uploader.upload(file.tmpPath);
-                console.log(cloudinaryResponse);
-                console.log(await auth.user.posts().create({
+                await auth.user.posts().create({
                     title: post.title,
                     description: post.description,
                     image_url: cloudinaryResponse.secure_url,
                     user_id: auth.user.id
-                }));
+                });
                 session.flash({ message: 'Your post has been posted!' });
             } catch (e) {
                 session.flash({message: 'Error'});
             }
             return response.redirect('back');
         } else {
-            console.log(await auth.user.posts().create({
+            await auth.user.posts().create({
                 title: post.title,
                 description: post.description,
                 image_url: null,
                 user_id: auth.user.id
-            }));
+            });
             session.flash({ message: 'Your post has been posted!' });
             return response.redirect('back');
         }
@@ -56,8 +52,7 @@ class PostController {
 
     async delete({ response, session, params}) {
         const post = await Post.find(params.id);
-        console.log(post);
-        console.log(await post.delete());
+        await post.delete();
         session.flash({ message: 'Your post has been removed'});
         return response.redirect('back');
     }
@@ -65,20 +60,18 @@ class PostController {
 
     async edit({ params, view }) {
         const post = await Post.find(params.id);
-        console.log(post);
         return view.render('edit-post', { post: post });
     }
 
 
     async update ({ response, request, session, params }) {
         const post = await Post.find(params.id);
-        console.log(post);
         post.title = request.all().title;
         post.description = request.all().description;
         post.image_url = request.all().image_url;
         post.user_id = request.all().user_id;
 
-        console.log(await post.save());
+        await post.save();
         session.flash({ message: 'Your post has been updated. '});
         return response.redirect('/user_posts');
     }

@@ -19,7 +19,7 @@ Route.post  ('/login', 'UserController.login')
     .as('LoginUser');
 
 Route.get   ('/logout', async ({ auth, response }) => {
-    console.log(await auth.logout());
+    await auth.logout();
     return response.redirect('/');
 });
 
@@ -38,7 +38,6 @@ Route.get   ('/ajax/posts_by_date', async ({ request, response }) => {
         .with('user')
         .where('created_at', request.all().date)
         .fetch();
-    console.log(posts);
     return response.json({ posts: posts.toJSON() })
 });
 
@@ -47,6 +46,12 @@ Route.get   ('/ajax/posts_by_user', async ({ request, response }) => {
         .with('user')
         .where('user_id', 2)
         .fetch();
-    console.log(posts);
     return response.json({ posts: posts.toJSON() })
 }); 
+
+Route.on('/forgotPassword').render('auth.password-recover');
+Route.post('/forgotPassword', 'UserController.resetToken');
+Route.get('/forgotPassword/:id/:token', async ({ request, view, params, response }) => {
+    return view.render('auth.new-password', { _id : params.id, _token : params.token })
+}); 
+Route.post('/forgotPassword/:id/:token', 'UserController.resetPassword');

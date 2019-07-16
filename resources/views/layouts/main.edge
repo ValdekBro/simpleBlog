@@ -38,10 +38,10 @@
         <span id="message" class="message big-message">{{ flashMessage('message') }}</span>
     @endif
     <script>
-            function func() {
+            function func() { // Auto hide message timer
                 document.getElementById("message").style.display = "none";
             }
-            setTimeout(func, 8000);
+            setTimeout(func, 10000);
     </script>
     
     <div class="top-bar">
